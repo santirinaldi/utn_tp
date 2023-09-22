@@ -842,6 +842,18 @@ footer {
     width: 15%;
 }
 
+/*#listBody .l5 ul:first-child {
+    width: 55%;
+}
+
+#listBody .l5 ul {
+    width: 15%;
+}
+
+#listBody .l5 ul:nth-last-child(-n+2) {
+    width: 7.5%;
+}*/
+
 #list-section ul>h5 {
     margin: 0;
     text-transform: uppercase;
@@ -881,12 +893,35 @@ footer {
     font-size: 0.85rem;
 }
 
+.removeButton {
+    border: none;
+    padding: 0;
+    display: inline-block;
+    background: transparent;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    color: #bdbdbd;
+}
+
+.removeButton.active {
+    color: #d15555;
+    cursor: pointer;
+}
+
+#listBody div:hover .removeButton {
+    color: #fff;
+}
+
 #description-section {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     padding-top: 3rem;
-    min-height: 50vh;
+    min-height: 60vh;
     position: relative;
+}
+
+#description-data {
+    width: 50%;
 }
 
 .band-image {
@@ -907,9 +942,26 @@ footer {
 .band-followers {
     font-size: 0.85rem;
     font-weight: 700;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.band-genres {
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.band-id {
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: block;
 }
 
 .form.float {
+    visibility: visible;
+    opacity: 1;
     background: #000;
     position: absolute;
     bottom: 0;
@@ -918,6 +970,7 @@ footer {
     max-width: 20rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
+    transition: .35s ease-in-out;
 }
 
 .form form h3 {
@@ -927,6 +980,199 @@ footer {
     font-size: 1rem;
 }
 
+.form-message {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: #187c48;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .35s ease-in-out;
+}
+
+.form-message h4 {
+    color: #fff;
+    font-size: 1.3rem;
+    margin: 0;
+}
+
 #description-section .header-arrow svg>path {
     stroke: #000;
+}
+
+#popup-background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+#popup {
+    position: fixed;
+    top: 8rem;
+    width: 35rem;
+    height: 16.8rem;
+    left: calc((100vw - 35rem) /2);
+    background: #187C48;
+    padding: 1rem;
+    z-index: 1;
+}
+
+#popup .form {
+    width: 100%;
+    height: 100%;
+}
+
+#popup .form label {
+    background: #187C48;
+    border-left: 5px solid #187C48;
+    border-right: 5px solid #187C48;
+}
+
+#login:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.showP {
+    display: block!important;
+}
+
+#bandIds {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    min-height: 16.8rem;
+    left: 0;
+    top: 8rem;
+    background: #fff;
+    z-index: 1;
+    width: calc((100vw - 35rem) / 2);
+    padding: 1rem;
+    transition: .35s ease-in-out;
+}
+
+#bandIds ul {
+    padding: 0;
+}
+
+#bandIds>ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#bandIds>ul:first-child {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid;
+}
+
+#bandIds>ul:first-child li {
+    width: 50%;
+}
+
+#bandIds>ul:first-child li h5 {
+    margin: 0;
+}
+
+#bandIds>ul>.li-2 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+#bandIds>ul>.li-2:last-child {
+    margin-bottom: 0;
+}
+
+#bandIds>ul>.li-2 ul {
+    width: 50%;
+}
+
+#bandIds>ul>.li-2 ul p {
+    font-size: 0.8rem;
+    font-weight: 700;
+    word-break: break-word;
+    margin: 0;
+}
+
+#showId {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+}
+
+#popupError {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #f00;
+    display: none;
+}
+
+.album-image {
+    width: 6rem;
+    margin-bottom: 1rem;
+}
+
+.album-name {
+    color: #fff;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.album-band {
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.album-tracks {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: #fff;
+    font-weight: 700;
+}
+
+.album-release {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: #fff;
+    font-weight: 700;
+}
+
+.show {
+    visibility: visible!important;
+    opacity: 1!important;
+}
+
+.hide {
+    visibility: hidden!important;
+    opacity: 0!important;
+}
+
+.hidden {
+    display: none;
 }

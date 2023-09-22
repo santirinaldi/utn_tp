@@ -78,19 +78,19 @@
         <div id="description-data"></div>
 
         <div class="form float">
+            <div class="form-message"></div>
             <form action="">
-                    <h3>Login here!</h3>
+                    <h3>Log in to upload or delete albums!</h3>
                     <div class="field-wrapper">
                         <input type="text" name="name" id="name">
-                        <label for="name">Name</label>
+                        <label for="name">Band Name</label>
                     </div>
                     <div class="field-wrapper">
                         <input type="text" name="id" id="bId">
-                        <label for="bId">ID</label>
+                        <label for="bId">Band ID</label>
                     </div>
    
-                    <button type="submit" class="btn primary">Send</button>
-               
+                    <button type="submit" class="btn primary" id="login">Send</button>
             </form>
         </div>
 
@@ -109,7 +109,7 @@
                 <ul><h5>Name</h5></ul>
                 <ul><h5>Tracks</h5></ul>
                 <ul><h5>Year</h5></ul>
-                <ul><h5>ID</h5></ul>
+                <ul><h5>Actions</h5></ul>
             </li>
             <li id="listBody"></li>
         </ul>
@@ -157,8 +157,87 @@
         </div>
 
     </footer>
+
+    <div id="popup-background">
+        <div id="popup">
+            <div id="showId">Show IDs</div>
+            <div class="form">
+                <form action="">
+                        <h3>Enter the band ID</h3>
+                        <div class="field-wrapper">
+                            <input type="text" name="id" id="bIdL">
+                            <label for="bIdL">Band ID</label>
+                        </div>
+       
+                        <button type="submit" class="btn primary" id="showData">Send</button>
+                </form>
+            </div>
+            <div id="popupError">The band was not found</div>
+        </div>
+    </div>
     
-    <script src="getdata.js"></script>
+    <div id="bandIds">
+        <ul>
+            <li>
+                <h5>Band</h5>
+            </li>
+            <li>
+                <h5>ID</h5>
+            </li>
+        </ul>
+        <ul>
+            <li class="li-2">
+                <ul>
+                    <p>The Beatles</p>
+                </ul>
+                <ul>
+                    <p>3WrFJ7ztbogyGnTHbHJFl2</p>
+                </ul>
+            </li>
+            <li class="li-2">
+                <ul>
+                    <p>Soda Stereo</p>
+                </ul>
+                <ul>
+                    <p>7An4yvF7hDYDolN4m5zKBp</p>
+                </ul>
+            </li>
+            <li class="li-2">
+                <ul>
+                    <p>Gustavo Cerati</p>
+                </ul>
+                <ul>
+                    <p>1QOmebWGB6FdFtW7Bo3F0W</p>
+                </ul>
+            </li>
+            <li class="li-2">
+                <ul>
+                    <p>Arctic Monkeys</p>
+                </ul>
+                <ul>
+                    <p>7Ln80lUS6He07XvHI8qqHH</p>
+                </ul>
+            </li>
+            <li class="li-2">
+                <ul>
+                    <p>Tame Impala</p>
+                </ul>
+                <ul>
+                    <p>5INjqkS1o8h1imAzPqGZBb</p>
+                </ul>
+            </li>
+            <li class="li-2">
+                <ul>
+                    <p>The Strokes</p>
+                </ul>
+                <ul>
+                    <p>0epOFNiUfyON9EYx7Tpr6V</p>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <script src="./js/getdata.js"></script>
     <script>
         const menuBtn = document.getElementById("menu-button");
         const menu = document.querySelector(".menu");
@@ -172,6 +251,7 @@
 
         const nameField = document.getElementById("name");
         const idField = document.getElementById("bId");
+        const idLField = document.getElementById("bIdL");
 
 
         nameField.addEventListener("focus", () => {
@@ -179,6 +259,9 @@
         });
         idField.addEventListener("focus", () => {
             idField.parentNode.classList.add("float");
+        });
+        idLField.addEventListener("focus", () => {
+            idLField.parentNode.classList.add("float");
         });
 
 
@@ -194,6 +277,13 @@
                 idField.parentNode.classList.add("float");
             }else{
                 idField.parentNode.classList.remove("float");
+            }
+        });
+        idLField.addEventListener("blur", () => {
+            if(idLField.value.length > 0) {
+                idLField.parentNode.classList.add("float");
+            }else{
+                idLField.parentNode.classList.remove("float");
             }
         });
 
